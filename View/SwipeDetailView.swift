@@ -11,7 +11,7 @@ struct SwipeDetailView: View {
     let personnages: [Perso]
     @State var indexActuel: Int
     @ObservedObject var viewModel: ViewModel
-
+    
     var body: some View {
         TabView(selection: $indexActuel) {
             ForEach(personnages.indices, id: \.self) { idx in
@@ -20,5 +20,15 @@ struct SwipeDetailView: View {
             }
         }
         .tabViewStyle(.page)
+    
+        .onAppear {
+            // joue le son du premier perso affiché
+            let perso = personnages[indexActuel]
+            viewModel.playSound(named: perso.son)
+        }
+        .onChange(of: indexActuel) {
+            let perso = personnages[indexActuel]
+            viewModel.playSound(named: perso.son)
+        }
     }
 }

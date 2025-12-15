@@ -54,11 +54,9 @@ struct ContentView: View {
             }
             .padding(.vertical)
         }
-        .onAppear {
-            viewModel.playSound(named: perso.son)
         }
     }
-}
+
 
 struct StatRow: View {
     let label: String

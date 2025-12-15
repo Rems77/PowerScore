@@ -14,7 +14,7 @@ struct FightView: View {
     @State private var selectedPerso2: Perso?
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 5) {
             
             // --- 1. Choix de la stat ---
             Section("Statistique à comparer") {
@@ -54,6 +54,7 @@ struct FightView: View {
                 let v1 = value(of: p1, stat: selectedStat)
                 let v2 = value(of: p2, stat: selectedStat)
                 let maxVal = viewModel.maxValue(for: selectedStat)
+                let gagnant = winner(p1: p1, p2: p2)
                 
                 VStack(spacing: 15) {
                     Text("Comparaison visuelle")
@@ -63,29 +64,18 @@ struct FightView: View {
                               value2: Double(v2),
                               maxValue: maxVal)
                     
-                    HStack {
-                        VStack{
-                            Image(p1.photo)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .cornerRadius(10)
-                            Text("\(p1.nom): \(v1)")
-                            
-                        }
-                        .padding(.horizontal)
-                        
-                        Spacer()
-                        
-                        VStack{
-                            Image(p2.photo)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .cornerRadius(10)
-                            Text("\(p2.nom): \(v2)")
-                        }
-                        .padding(.horizontal)
+                    HStack(spacing: 30) {
+                        FighterColumnView(
+                            perso: p1,
+                            value: v1,
+                            isWinner: gagnant?.id == p1.id
+                        )
+
+                        FighterColumnView(
+                            perso: p2,
+                            value: v2,
+                            isWinner: gagnant?.id == p2.id
+                        )
                     }
                     Section("Résultat") {
                         if let p1 = selectedPerso1, let p2 = selectedPerso2 {
@@ -114,24 +104,34 @@ struct FightView: View {
                 return "Égalité parfaite !"
             }
         }
+    // --- Récupérer la valeur d'une stat pour un personnage ---
+        func value(of perso: Perso, stat: String) -> Int {
+            switch stat.lowercased() {
+            case "force": return perso.force
+            case "vitesse": return perso.vitesse
+            case "durabilite": return perso.durabilite
+            case "intelligence": return perso.intelligence
+            case "pouvoir": return perso.pouvoir
+            case "agilite": return perso.agilite
+            case "endurance": return perso.endurance
+            case "regeneration": return perso.regeneration
+            case "polyvalence": return perso.polyvalence
+            case "experience": return perso.experience
+            case "powerscore": return perso.powerScore
+            default: return 0
+            }
+        }
+    func winner(p1: Perso, p2: Perso) -> Perso? {
+        let v1 = value(of: p1, stat: selectedStat)
+        let v2 = value(of: p2, stat: selectedStat)
+
+        if v1 > v2 { return p1 }
+        if v2 > v1 { return p2 }
+        return nil // égalité
+    }
+
     }
     
-    // --- Récupérer la valeur d'une stat pour un personnage ---
-    func value(of perso: Perso, stat: String) -> Int {
-        switch stat.lowercased() {
-        case "force": return perso.force
-        case "vitesse": return perso.vitesse
-        case "durabilite": return perso.durabilite
-        case "intelligence": return perso.intelligence
-        case "pouvoir": return perso.pouvoir
-        case "agilite": return perso.agilite
-        case "endurance": return perso.endurance
-        case "regeneration": return perso.regeneration
-        case "polyvalence": return perso.polyvalence
-        case "experience": return perso.experience
-        case "powerscore": return perso.powerScore
-        default: return 0
-        }
-    }
+    
     
 

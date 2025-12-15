@@ -60,6 +60,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		226D3B6A2EEDDD43009E1475 /* sound */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = sound;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +100,7 @@
 				226D3ABB2EE897AB009E1475 /* Power_scoreUITests */,
 				226D3AEC2EE8987E009E1475 /* View */,
 				226D3AEE2EE89899009E1475 /* ViewModel */,
+				226D3B6A2EEDDD43009E1475 /* sound */,
 				226D3AF12EE898C9009E1475 /* Model */,
 				226D3B412EE9DCD0009E1475 /* Power_score.app */,
 				226D3B422EE9DCD0009E1475 /* Power_scoreTests.xctest */,
@@ -122,6 +128,7 @@
 				226D3AEC2EE8987E009E1475 /* View */,
 				226D3AEE2EE89899009E1475 /* ViewModel */,
 				226D3AF12EE898C9009E1475 /* Model */,
+				226D3B6A2EEDDD43009E1475 /* sound */,
 			);
 			name = Power_score;
 			packageProductDependencies = (

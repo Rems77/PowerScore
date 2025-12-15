@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftUICore
 
 struct ListingView: View {
     
@@ -20,22 +21,20 @@ struct ListingView: View {
                     CellView(perso: perso)
                 }
             }
-            .navigationTitle("Power Score")
         }
     }
-}
-
-struct CellView: View {
-    let perso: Perso
-    
-    var body: some View {
-        HStack {
-            Image(perso.photo)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 70, height: 70)
-                .clipShape(Circle())
-            Text(perso.nom)
+    struct CellView: View {
+        let perso: Perso
+        
+        var body: some View {
+            HStack {
+                Image(perso.photo)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 70, height: 70)
+                    .clipShape(Circle())
+                Text(perso.nom)
+            }
         }
     }
 }
