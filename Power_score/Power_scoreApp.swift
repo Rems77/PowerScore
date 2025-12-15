@@ -12,6 +12,7 @@ struct Power_scoreApp: App {
     var body: some Scene {
         WindowGroup {
             MenuView()
+                .preferredColorScheme(.dark)
         }
     }
 }

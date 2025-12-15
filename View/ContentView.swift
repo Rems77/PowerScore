@@ -35,18 +35,18 @@ struct ContentView: View {
                 
                 // --- TABLEAU DE STATS ---
                 VStack(spacing: 12) {
-                    StatRow(label: "Force", value: perso.force)
-                    StatRow(label: "Vitesse", value: perso.vitesse)
-                    StatRow(label: "Durabilité", value: perso.durabilite)
-                    StatRow(label: "Intelligence", value: perso.intelligence)
-                    StatRow(label: "Pouvoir", value: perso.pouvoir)
-                    StatRow(label: "Agilité", value: perso.agilite)
-                    StatRow(label: "Endurance", value: perso.endurance)
-                    StatRow(label: "Régénération", value: perso.regeneration)
-                    StatRow(label: "Polyvalence", value: perso.polyvalence)
-                    StatRow(label: "Expérience", value: perso.experience)
-                    StatRow(label: "PowerScore", value: perso.powerScore)
-                }
+                        StatRow(label: "force", value: perso.force)
+                        StatRow(label: "vitesse", value: perso.vitesse)
+                        StatRow(label: "durabilite", value: perso.durabilite)
+                        StatRow(label: "intelligence", value: perso.intelligence)
+                        StatRow(label: "pouvoir", value: perso.pouvoir)
+                        StatRow(label: "agilite", value: perso.agilite)
+                        StatRow(label: "endurance", value: perso.endurance)
+                        StatRow(label: "regeneration", value: perso.regeneration)
+                        StatRow(label: "polyvalence", value: perso.polyvalence)
+                        StatRow(label: "experience", value: perso.experience)
+                        StatRow(label: "powerscore", value: perso.powerScore)
+                    }
                 .padding()
                 .background(.ultraThinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -64,6 +64,9 @@ struct StatRow: View {
     
     var body: some View {
         HStack {
+            Image(systemName: icon(for: label))
+                .foregroundColor(.orange)
+                .frame(width: 24)
             Text(label)
                 .font(.headline)
             Spacer()
@@ -76,4 +79,20 @@ struct StatRow: View {
         .background(Color.white.opacity(0.15))
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
+    private func icon(for stat: String) -> String {
+            switch stat.lowercased() {
+            case "force": return "bolt.fill"
+            case "vitesse": return "hare.fill"
+            case "durabilite": return "shield.fill"
+            case "intelligence": return "brain.head.profile"
+            case "pouvoir": return "sparkles"
+            case "agilite": return "figure.run"
+            case "endurance": return "heart.fill"
+            case "regeneration": return "arrow.triangle.2.circlepath"
+            case "polyvalence": return "square.grid.2x2.fill"
+            case "experience": return "medal.fill"
+            case "powerscore": return "crown.fill"
+            default: return "questionmark"
+            }
+        }
 }

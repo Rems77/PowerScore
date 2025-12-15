@@ -27,7 +27,7 @@ struct MenuView: View {
                         .font(.title2)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green)
+                        .background(Color.orange)
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
@@ -38,7 +38,7 @@ struct MenuView: View {
                         .font(.title2)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green)
+                        .background(Color.orange)
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
@@ -49,14 +49,16 @@ struct MenuView: View {
                         .font(.title2)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.green)
+                        .background(Color.orange)
                         .foregroundColor(.white)
                         .cornerRadius(12)
                 }
-                
                 Spacer()
             }
             .padding()
+
         }
+
     }
+    
 }

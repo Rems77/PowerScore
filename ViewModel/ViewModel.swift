@@ -81,5 +81,5 @@ class ViewModel: ObservableObject {
                 print("❌ Erreur de lecture du son :", error)
             }
         }
-}
+    }
 
